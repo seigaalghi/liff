@@ -8,9 +8,14 @@ const App = () => {
       .init({
         liffId: '1655315643-O6DqdDE8',
       })
-      .then(() => {
-        if (isLogin) {
-          setProfile(window.liff.getProfile());
+      .then(async () => {
+        const user = await window.liff.getProfile();
+        if (!user) {
+          return null;
+        }
+        if (user) {
+          setProfile(user);
+          setisLogin(true);
         }
       });
   }, []);
