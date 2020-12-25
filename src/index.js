@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { LiffProvider } from 'react-liff';
-
+import { AppContextProvider } from './context/context';
 import App from './App';
-
-const liffId = '1655315643-O6DqdDE8';
-const stubEnabled = process.env.NODE_ENV !== 'production';
+require('dotenv').config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <LiffProvider liffId={liffId} stubEnabled={stubEnabled}>
+    <AppContextProvider>
       <App />
-    </LiffProvider>
+    </AppContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

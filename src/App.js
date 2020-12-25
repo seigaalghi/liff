@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import Landing from './components/Landing';
+import { AppContext } from './context/context';
+import './App.scss';
 
 const App = () => {
-  const [profile, setProfile] = useState({});
-  const [isLogin, setisLogin] = useState(false);
+  const [state, dispatch] = useContext(AppContext);
   useEffect(() => {
     window.liff
       .init({
@@ -10,31 +12,22 @@ const App = () => {
       })
       .then(async () => {
         if (window.liff.isLoggedIn()) {
-          const user = await window.liff.getProfile();
-          setisLogin(true);
-          setProfile(user);
+          const profile = await window.liff.getProfile();
+          dispatch({
+            type: 'LOGIN',
+          });
+          dispatch({
+            type: 'LOAD_PROFILE',
+            payload: profile,
+          });
         }
       });
   }, []);
 
-  const loginHandler = async () => {
-    window.liff
-      .login()
-      .then(() => setProfile(window.liff.getProfile()))
-      .then(() => setisLogin(true));
-  };
-
-  return (
-    <div className='App'>
-      {!isLogin ? (
-        <button onClick={loginHandler}>Login</button>
-      ) : (
-        <div>
-          <h1>Hello {profile.displayName}</h1>
-        </div>
-      )}
-    </div>
-  );
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
+  return <div>{!state.isLogin ? <Landing /> : 'Home'}</div>;
 };
 
 export default App;
