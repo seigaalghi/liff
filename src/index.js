@@ -4,7 +4,7 @@ import { LiffProvider } from 'react-liff';
 
 import App from './App';
 
-const liffId = process.env.REACT_APP_LINE_LIFF_ID;
+const liffId = '1655315643-O6DqdDE8';
 const stubEnabled = process.env.NODE_ENV !== 'production';
 
 ReactDOM.render(
