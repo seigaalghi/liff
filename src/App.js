@@ -1,4 +1,3 @@
-import liff from '@line/liff/dist/lib/liff';
 import React, { useEffect, useState } from 'react';
 
 const App = () => {
