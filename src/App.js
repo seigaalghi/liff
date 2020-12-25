@@ -1,3 +1,4 @@
+import liff from '@line/liff/dist/lib/liff';
 import React, { useEffect, useState } from 'react';
 
 const App = () => {
@@ -9,13 +10,10 @@ const App = () => {
         liffId: '1655315643-O6DqdDE8',
       })
       .then(async () => {
-        const user = await window.liff.getProfile();
-        if (!user) {
-          return null;
-        }
-        if (user) {
-          setProfile(user);
+        if (window.liff.isLoggedIn()) {
+          const user = await window.liff.getProfile();
           setisLogin(true);
+          setProfile(user);
         }
       });
   }, []);
