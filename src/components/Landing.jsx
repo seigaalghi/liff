@@ -15,25 +15,23 @@ const Landing = () => {
   };
 
   useEffect(() => {
-    if (window.liff) {
-      window.liff
-        .init({
-          liffId: '1655315643-O6DqdDE8',
-        })
-        .then(async () => {
-          if (window.liff.isLoggedIn()) {
-            const profile = await window.liff.getProfile();
-            dispatch({
-              type: 'LOGIN',
-            });
-            dispatch({
-              type: 'LOAD_PROFILE',
-              payload: profile,
-            });
-            return <Redirect to='/' />;
-          }
-        });
-    }
+    window.liff
+      .init({
+        liffId: '1655315643-O6DqdDE8',
+      })
+      .then(async () => {
+        if (window.liff.isLoggedIn()) {
+          const profile = await window.liff.getProfile();
+          dispatch({
+            type: 'LOGIN',
+          });
+          dispatch({
+            type: 'LOAD_PROFILE',
+            payload: profile,
+          });
+          return <Redirect to='/' />;
+        }
+      });
   }, [window.liff]);
 
   return (
@@ -41,7 +39,9 @@ const Landing = () => {
       <button className='btn btn-primary' onClick={loginHandler}>
         Login
       </button>
-      <button className='btn btn-success'>Close App</button>
+      <button className='btn btn-success' onClick={() => window.liff.closeWindow()}>
+        Close App
+      </button>
     </div>
   );
 };
