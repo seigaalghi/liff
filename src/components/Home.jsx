@@ -5,6 +5,18 @@ import Navbar from './Navbar';
 
 const Home = () => {
   const [state, dispatch] = useContext(AppContext);
+  const addFood = (food) => {
+    dispatch({
+      type: 'ADD_FOOD',
+      payload: food,
+    });
+  };
+  const addDrink = (drink) => {
+    dispatch({
+      type: 'ADD_DRINK',
+      payload: drink,
+    });
+  };
   return (
     <Fragment>
       <Navbar />
@@ -27,7 +39,9 @@ const Home = () => {
             </h4>
 
             <div className='action'>
-              <div className='add'>Add to Cart</div>
+              <div className='add' onClick={() => addFood(food)}>
+                Add to Cart
+              </div>
             </div>
           </div>
         ))}
@@ -49,7 +63,9 @@ const Home = () => {
             </h4>
 
             <div className='action'>
-              <div className='add'>Add to Cart</div>
+              <div className='add' onClick={() => addDrink(drink)}>
+                Add to Cart
+              </div>
             </div>
           </div>
         ))}

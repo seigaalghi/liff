@@ -9,7 +9,6 @@ const Navbar = () => {
       <div className='action'>
         <div className='cart'>
           <h4>{state.profile.displayName}</h4>
-          <h4>Cart : {state.cart.length}</h4>
         </div>
         <img src={state.profile.pictureUrl} alt='avatar' />
       </div>

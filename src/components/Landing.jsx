@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AppContext } from '../context/context';
 
@@ -10,24 +10,23 @@ const Landing = () => {
         liffId: '1655315643-O6DqdDE8',
       })
       .then(() => {
-        window.liff.login().then(async () => {
-          const profile = await window.liff.getProfile();
-          dispatch({
-            type: 'LOGIN',
-          });
-          dispatch({
-            type: 'LOAD_PROFILE',
-            payload: profile,
-          });
-        });
+        window.liff.login();
       });
   };
 
-  if (window.liff) {
-    if (window.liff.isLoggedIn()) {
-      return <Redirect to='/' />;
+  useEffect(() => {
+    if (window.liff) {
+      window.liff
+        .init({
+          liffId: '1655315643-O6DqdDE8',
+        })
+        .then(() => {
+          if (window.liff.isLoggedIn()) {
+            return <Redirect to='/' />;
+          }
+        });
     }
-  }
+  }, [window.liff]);
 
   return (
     <div className='landing-container'>

@@ -22,6 +22,11 @@ const reducer = (state, action) => {
         ...state,
         profile: payload,
       };
+    case 'ADD_FOOD':
+      return {
+        ...state,
+        food: [...state.food, payload],
+      };
     default:
       return state;
   }

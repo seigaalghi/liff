@@ -15,6 +15,7 @@ const App = () => {
           liffId: '1655315643-O6DqdDE8',
         })
         .then(async () => {
+          console.log(window.liff.isLoggedIn());
           if (window.liff.isLoggedIn()) {
             const profile = await window.liff.getProfile();
             dispatch({
@@ -27,11 +28,12 @@ const App = () => {
           }
         });
     }
-  }, [window, window.liff]);
+  }, [window.liff]);
 
   useEffect(() => {
     console.log(state);
   }, [state]);
+
   return (
     <BrowserRouter>
       <Switch>
