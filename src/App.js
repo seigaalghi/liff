@@ -22,12 +22,14 @@ const App = () => {
         console.log(error);
       }
     };
-    if (window.liff) {
-      isReady();
-    }
+    setTimeout(() => isReady, 1500);
   }, [window.liff]);
-
-  return !ready ? null : <Fragment>{window.liff.isLoggedIn() ? <Home /> : <Landing />}</Fragment>;
+  console.log(ready);
+  return !ready ? (
+    <h1>Loading</h1>
+  ) : (
+    <Fragment>{window.liff.isLoggedIn() ? <Home /> : <Landing />}</Fragment>
+  );
 };
 
 export default App;
