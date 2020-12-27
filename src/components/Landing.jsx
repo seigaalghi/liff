@@ -9,18 +9,19 @@ const Landing = () => {
     window.liff.login();
   };
 
-  if (window.liff.isLoggedIn()) {
-    return <Redirect to='/' />;
-  }
-
   return (
     <div className='landing-container'>
+      <h3>Hello... Selamat datang di Food Ways</h3>
+      <h4>Disini kami menyediakan makanan dan minuman yang enak enak loh</h4>
+      <h4>Untuk memesan silahkan login terlebih dahulu</h4>
       <button className='btn btn-primary' onClick={loginHandler}>
         Login
       </button>
-      <button className='btn btn-success' onClick={() => window.liff.closeWindow()}>
-        Close App
-      </button>
+      {window.liff.isInClient() ? (
+        <button className='btn btn-danger' onClick={() => window.liff.closeWindow()}>
+          Close App
+        </button>
+      ) : null}
     </div>
   );
 };

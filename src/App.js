@@ -29,7 +29,7 @@ const App = () => {
     setTimeout(() => isReady(), 1500);
   }, []);
   return !ready ? (
-    <h1>Loading</h1>
+    <h3>Loading</h3>
   ) : (
     <Fragment>{window.liff.isLoggedIn() ? <Home /> : <Landing />}</Fragment>
   );

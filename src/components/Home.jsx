@@ -33,6 +33,24 @@ const Home = () => {
       <Navbar />
       <Cart />
       <div className='home-container'>
+        <h2>Hai {state.profile.displayName} Selamat Datang di Food Ways</h2>
+        {window.liff.isInClient() ? (
+          <div
+            className='btn btn-primary'
+            onClick={() =>
+              window.liff.openWindow({
+                url: 'https://liff-seiga.herokuapp.com/',
+                external: true,
+              })
+            }>
+            Open External Window
+          </div>
+        ) : null}
+        {window.liff.isInClient() ? (
+          <div className='btn btn-danger' onClick={() => window.liff.closeWindow()}>
+            Close Window
+          </div>
+        ) : null}
         <h1>Food List</h1>
         {state.foods.map((food) => (
           <div className='card' key={food.id}>
