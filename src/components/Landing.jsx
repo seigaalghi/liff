@@ -5,20 +5,28 @@ import { AppContext } from '../context/context';
 const Landing = () => {
   const [state, dispatch] = useContext(AppContext);
   const loginHandler = async () => {
-    window.liff.login().then(async () => {
-      const profile = await window.liff.getProfile();
-      dispatch({
-        type: 'LOGIN',
+    window.liff
+      .init({
+        liffId: '1655315643-O6DqdDE8',
+      })
+      .then(() => {
+        window.liff.login().then(async () => {
+          const profile = await window.liff.getProfile();
+          dispatch({
+            type: 'LOGIN',
+          });
+          dispatch({
+            type: 'LOAD_PROFILE',
+            payload: profile,
+          });
+        });
       });
-      dispatch({
-        type: 'LOAD_PROFILE',
-        payload: profile,
-      });
-    });
   };
 
-  if (window.liff.isLoggedIn()) {
-    return <Redirect to='/' />;
+  if (window.liff) {
+    if (window.liff.isLoggedIn()) {
+      return <Redirect to='/' />;
+    }
   }
 
   return (
