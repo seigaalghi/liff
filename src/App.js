@@ -11,6 +11,10 @@ const App = () => {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    console.log(state);
+  }, [state]);
+
+  useEffect(() => {
     const isReady = async () => {
       try {
         setReady(false);
@@ -22,9 +26,8 @@ const App = () => {
         console.log(error);
       }
     };
-    setTimeout(() => isReady, 1500);
-  }, [window.liff]);
-  console.log(ready);
+    setTimeout(() => isReady(), 1500);
+  }, []);
   return !ready ? (
     <h1>Loading</h1>
   ) : (

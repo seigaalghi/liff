@@ -1,10 +1,20 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import NumberFormat from 'react-number-format';
 import { AppContext } from '../context/context';
 import Navbar from './Navbar';
 
 const Home = () => {
   const [state, dispatch] = useContext(AppContext);
+  useEffect(() => {
+    const loadProfile = async () => {
+      const profile = await window.liff.getProfile();
+      dispatch({
+        type: 'LOAD_PROFILE',
+        payload: profile,
+      });
+    };
+    loadProfile();
+  }, []);
   const addFood = (food) => {
     dispatch({
       type: 'ADD_FOOD',
