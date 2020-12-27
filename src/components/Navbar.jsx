@@ -3,7 +3,7 @@ import { AppContext } from '../context/context';
 
 const Navbar = () => {
   const [state, dispatch] = useContext(AppContext);
-  return (
+  return !state.profile ? null : (
     <div className='navbar-container'>
       <h1>Foody Ways</h1>
       <div className='action'>
