@@ -1,6 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+$primary: #e67e22;
+$secondary: #ecf0f1;
+$success: #2ecc71;
+$warning: #f1c40f;
+$danger: #e74c3c;
+$grey: #bdc3c7;
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
 .landing-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.navbar-container {
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  height: 80px;
+  background-color: $primary;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  h1 {
+    color: $secondary;
+  }
+  .action {
+    display: flex;
+    align-items: center;
+    .cart {
+      align-items: center;
+      h4 {
+        margin-right: 20px;
+        color: $secondary;
+      }
+    }
+    img {
+      border-radius: 50%;
+      width: 70;
+      height: 70;
+      border: 2px solid black;
+    }
+  }
+}
+
+.home-container {
+  width: 90%;
+  margin: 90px auto;
+
+  .card {
+    display: grid;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    grid-template-areas: 'img name' 'img price' 'img action';
+    grid-template-columns: 150px auto;
+    grid-template-rows: 30px 30px auto;
+    box-shadow: 1px 1px 5px black;
+    img {
+      max-width: 150px;
+      grid-area: img;
+      border-radius: 5px;
+    }
+    h3 {
+      grid-area: name;
+      color: $primary;
+      margin-left: 10px;
+    }
+    h4 {
+      grid-area: price;
+      margin-left: 10px;
+    }
+    .action {
+      grid-area: action;
+      margin-left: 10px;
+      background-color: $success;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
 }

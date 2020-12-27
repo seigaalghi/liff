@@ -1,9 +1,12 @@
 import { createContext, useReducer } from 'react';
-export const AppContext = createContext();
+import data from './data.json';
 
 const initialState = {
+  ...data,
   isLogin: false,
   profile: {},
+  drink: [],
+  food: [],
 };
 
 const reducer = (state, action) => {
@@ -29,3 +32,5 @@ export const AppContextProvider = (props) => {
 
   return <AppContext.Provider value={[state, dispatch]}>{props.children}</AppContext.Provider>;
 };
+
+export const AppContext = createContext();

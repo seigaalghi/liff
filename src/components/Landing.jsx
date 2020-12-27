@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { AppContext } from '../context/context';
 
 const Landing = () => {
@@ -15,6 +16,11 @@ const Landing = () => {
       });
     });
   };
+
+  if (window.liff.isLoggedIn()) {
+    return <Redirect to='/' />;
+  }
+
   return (
     <div className='landing-container'>
       <button className='btn btn-primary' onClick={loginHandler}>
