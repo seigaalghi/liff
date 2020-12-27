@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, Fragment } from 'react';
 import Landing from './components/Landing';
 import { AppContext } from './context/context';
 import './App.scss';
@@ -27,14 +27,7 @@ const App = () => {
     }
   }, [window.liff]);
 
-  return !ready ? null : (
-    <BrowserRouter>
-      <Switch>
-        <Route component={Landing} exact path='/login' />
-        <PrivateRoute component={Home} exact path='/' />
-      </Switch>
-    </BrowserRouter>
-  );
+  return !ready ? null : <Fragment>{window.liff.isLoggedIn() ? <Home /> : <Landing />}</Fragment>;
 };
 
 export default App;
