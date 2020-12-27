@@ -7,9 +7,7 @@ const initialState = {
   profile: {},
   drink: [],
   food: [],
-  cart: {
-    isOpen: false,
-  },
+  cart: false,
 };
 
 const reducer = (state, action) => {
@@ -43,15 +41,28 @@ const reducer = (state, action) => {
           ? state.drink.map((drnk) => (drnk.id === payload.id ? newDrink : drnk))
           : [...state.drink, payload],
       };
+    case 'REMOVE_FOOD':
+      return {
+        ...state,
+        food: state.food
+          .map((fod) =>
+            fod.id == payload.id ? (fod.count !== 1 ? { ...fod, count: fod.count - 1 } : null) : fod
+          )
+          .filter((fod) => fod !== null),
+      };
+    case 'REMOVE_DRINK':
+      return {
+        ...state,
+        drink: state.drink
+          .map((fod) =>
+            fod.id == payload.id ? (fod.count !== 1 ? { ...fod, count: fod.count - 1 } : null) : fod
+          )
+          .filter((fod) => fod !== null),
+      };
     case 'CART_OPEN':
       return {
         ...state,
-        cart: { ...state.cart, isOpen: true },
-      };
-    case 'CART_CLOSE':
-      return {
-        ...state,
-        cart: { ...state.cart, isOpen: false },
+        cart: !state.cart,
       };
     default:
       return state;

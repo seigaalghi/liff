@@ -19,11 +19,8 @@ const Navbar = () => {
         </div>
         <div className='btn' onClick={() => dispatch({ type: 'CART_OPEN' })}>
           Cart :{' '}
-          {state.food.length > 0
-            ? state.food.map((fod) => fod.count).reduce(reducer)
-            : 0 + state.drink.length > 0
-            ? state.drink.map((drnk) => drnk.count).reduce(reducer)
-            : 0}
+          {(state.food.length > 0 ? state.food.map((fod) => fod.count).reduce(reducer) : 0) +
+            (state.drink.length > 0 ? state.drink.map((drnk) => drnk.count).reduce(reducer) : 0)}
         </div>
         <div className='cart'>
           <h3>Hai {state.profile.displayName}</h3>

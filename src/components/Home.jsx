@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import NumberFormat from 'react-number-format';
 import { AppContext } from '../context/context';
+import Cart from './Cart';
 import Navbar from './Navbar';
 
 const Home = () => {
@@ -30,6 +31,7 @@ const Home = () => {
   return (
     <Fragment>
       <Navbar />
+      <Cart />
       <div className='home-container'>
         <h1>Food List</h1>
         {state.foods.map((food) => (

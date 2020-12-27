@@ -35,9 +35,9 @@ body {
   justify-content: space-between;
   padding: 0 5%;
   .btn {
-    padding: 10px 20px;
+    padding: 5px 5px;
     background-color: $success;
-    color: $grey;
+    cursor: pointer;
   }
   h1 {
     color: $secondary;
@@ -45,8 +45,8 @@ body {
   .action {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 200px;
+    justify-content: space-evenly;
+    width: 300px;
     .cart {
       align-items: center;
       h4 {
@@ -93,12 +93,88 @@ body {
     .action {
       grid-area: action;
       margin-left: 10px;
-      background-color: $success;
-      padding: 10px;
+      .add {
+        background-color: $success;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.cart-container {
+  overflow: auto;
+  position: fixed;
+  top: 100px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid $primary;
+  padding: 20px;
+  .close {
+    background-color: $danger;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .checkout {
+    background-color: $success;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px auto;
+  }
+  .card {
+    display: grid;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    grid-template-areas: 'img name' 'img price' 'img action';
+    grid-template-columns: 150px auto;
+    grid-template-rows: 30px 30px auto;
+    box-shadow: 1px 1px 5px black;
+    img {
+      max-width: 150px;
+      grid-area: img;
       border-radius: 5px;
-      text-align: center;
-      cursor: pointer;
+    }
+    h3 {
+      grid-area: name;
+      color: $primary;
+      margin-left: 10px;
+    }
+    h4 {
+      grid-area: price;
+      margin-left: 10px;
+    }
+    .action {
+      display: flex;
+      grid-area: action;
       font-weight: bold;
+      align-items: center;
+      .remove {
+        background-color: $danger;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 5px;
+      }
+      .add {
+        background-color: $success;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 0px 10px;
+      }
     }
   }
 }
