@@ -23,15 +23,15 @@ const reducer = (state, action) => {
         profile: payload,
       };
     case 'ADD_FOOD':
-      const check = state.drink.find((drnk) => drnk.id === payload.id);
-      const newFood = check ? { ...check, count: check.count + 1 } : payload;
+      const checkFood = state.drink.find((drnk) => drnk.id === payload.id);
+      const newFood = checkFood ? { ...checkFood, count: checkFood.count + 1 } : payload;
       return {
         ...state,
         dood: [...state.dood, newFood],
       };
     case 'ADD_DRINK':
-      const check = state.drink.find((drnk) => drnk.id === payload.id);
-      const newDrink = check ? { ...check, count: check.count + 1 } : payload;
+      const checkDrink = state.drink.find((drnk) => drnk.id === payload.id);
+      const newDrink = checkDrink ? { ...checkDrink, count: checkDrink.count + 1 } : payload;
       return {
         ...state,
         drink: [...state.drink, newDrink],
