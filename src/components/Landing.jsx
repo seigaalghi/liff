@@ -20,8 +20,16 @@ const Landing = () => {
         .init({
           liffId: '1655315643-O6DqdDE8',
         })
-        .then(() => {
+        .then(async () => {
           if (window.liff.isLoggedIn()) {
+            const profile = await window.liff.getProfile();
+            dispatch({
+              type: 'LOGIN',
+            });
+            dispatch({
+              type: 'LOAD_PROFILE',
+              payload: profile,
+            });
             return <Redirect to='/' />;
           }
         });
