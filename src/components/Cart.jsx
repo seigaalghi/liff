@@ -9,29 +9,26 @@ const Cart = () => {
     (state.food.length > 0 ? state.food.map((fod) => fod.price * fod.count).reduce(reducer) : 0) +
     (state.drink.length > 0 ? state.drink.map((fod) => fod.price * fod.count).reduce(reducer) : 0);
   const checkoutHandler = () => {
-    const food = JSON.stringify(
-      state.food.map((fod) => ({ pesanan: fod.name, jumlah: fod.count }))
-    );
-    const drink = JSON.stringify(
-      state.drink.map((fod) => ({ pesanan: fod.name, jumlah: fod.count }))
-    );
+    // const food = JSON.stringify(
+    //   state.food.map((fod) => ({ Pesanan: fod.name, Jumlah: fod.count }))
+    // );
+    // const drink = JSON.stringify(
+    //   state.drink.map((fod) => ({ Pesanan: fod.name, Jumlah: fod.count }))
+    // );
     window.liff.sendMessages([
       {
         type: 'text',
-        text: `
-      Hai ${state.profile.name} \n
-      Terimakasih telah memesan makanan di Food Ways \n
-      Berikut rincian pesanannya : \n
-      \n
-      Makanan : \n
-      ${food}
-      minuman : \n
-      ${drink} \n
-      \n
+        text: `Hai ${state.profile.displayName}
+      Terimakasih telah memesan makanan di Food Ways 
+      Berikut rincian pesanannya :
+      
+      Makanan :
+      ${state.food.map((fod) => `${fod.name} Jumlah : ${fod.count}`)}
+      minuman :
+      ${state.drink.map((fod) => `${fod.name} Jumlah : ${fod.count}`)}
 
-      Pesanan kakak sedang diantar, mohon ditunggu ya.. \n
-      Total Pembayaran : ${price}
-    `,
+      Pesanan kakak sedang diantar, mohon ditunggu ya..
+      Total Pembayaran : ${price}`,
       },
     ]);
   };
