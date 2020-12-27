@@ -34,12 +34,19 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0 5%;
+  .btn {
+    padding: 10px 20px;
+    background-color: $success;
+    color: $grey;
+  }
   h1 {
     color: $secondary;
   }
   .action {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 200px;
     .cart {
       align-items: center;
       h4 {
