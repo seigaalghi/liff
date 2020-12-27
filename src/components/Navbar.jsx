@@ -5,7 +5,9 @@ const Navbar = () => {
   const [state, dispatch] = useContext(AppContext);
 
   const logoutHandler = () => {
-    window.liff.logout();
+    window.liff.logout().then(() => {
+      window.location.reload();
+    });
   };
 
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
