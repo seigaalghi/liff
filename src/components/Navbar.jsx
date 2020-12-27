@@ -15,7 +15,10 @@ const Navbar = () => {
     <div className='navbar-container'>
       <h3>Foody Ways</h3>
       <div className='action'>
-        <div className='btn btn-danger' onClick={logoutHandler}>
+        <div
+          className='btn btn-danger'
+          style={{ backgroundColor: '#e74c3c' }}
+          onClick={logoutHandler}>
           Logout
         </div>
         <div className='btn' onClick={() => dispatch({ type: 'CART_OPEN' })}>

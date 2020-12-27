@@ -1,6 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import { useLiff } from 'react-liff';
-import { Redirect } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { AppContext } from '../context/context';
 
 const Landing = () => {
