@@ -15,7 +15,10 @@ const Cart = () => {
     const drink = JSON.stringify(
       state.drink.map((fod) => ({ pesanan: fod.name, jumlah: fod.count }))
     );
-    window.liff.sendMessages(`
+    window.liff.sendMessages([
+      {
+        type: 'text',
+        text: `
       Hai ${state.profile.name} \n
       Terimakasih telah memesan makanan di Food Ways \n
       Berikut rincian pesanannya : \n
@@ -28,7 +31,9 @@ const Cart = () => {
 
       Pesanan kakak sedang diantar, mohon ditunggu ya.. \n
       Total Pembayaran : ${price}
-    `);
+    `,
+      },
+    ]);
   };
 
   return !state.cart ? null : (

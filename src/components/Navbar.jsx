@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return !state.profile ? null : (
     <div className='navbar-container'>
-      <h1>Foody Ways</h1>
+      <h3>Foody Ways</h3>
       <div className='action'>
         <div className='btn' onClick={logoutHandler}>
           Logout
