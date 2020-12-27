@@ -27,14 +27,18 @@ const reducer = (state, action) => {
       const newFood = checkFood ? { ...checkFood, count: checkFood.count + 1 } : payload;
       return {
         ...state,
-        dood: [...state.dood, newFood],
+        food: checkFood
+          ? state.food.map((fod) => (fod.id === payload.id ? newFood : fod))
+          : [...state.food, newFood],
       };
     case 'ADD_DRINK':
       const checkDrink = state.drink.find((drnk) => drnk.id === payload.id);
       const newDrink = checkDrink ? { ...checkDrink, count: checkDrink.count + 1 } : payload;
       return {
         ...state,
-        drink: [...state.drink, newDrink],
+        drink: checkDrink
+          ? state.drink.map((drnk) => (drnk.id === payload.id ? newDrink : drnk))
+          : [...state.drink, newDrink],
       };
     default:
       return state;
