@@ -15,12 +15,14 @@ const Navbar = () => {
     <div className='navbar-container'>
       <h3>Foody Ways</h3>
       <div className='action'>
-        <div
-          className='btn btn-danger'
-          style={{ backgroundColor: '#e74c3c' }}
-          onClick={logoutHandler}>
-          Logout
-        </div>
+        {window.liff.isInClient() ? null : (
+          <div
+            className='btn btn-danger'
+            style={{ backgroundColor: '#e74c3c' }}
+            onClick={logoutHandler}>
+            Logout
+          </div>
+        )}
         <div className='btn' onClick={() => dispatch({ type: 'CART_OPEN' })}>
           Cart :{' '}
           {(state.food.length > 0 ? state.food.map((fod) => fod.count).reduce(reducer) : 0) +
