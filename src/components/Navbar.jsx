@@ -5,9 +5,8 @@ const Navbar = () => {
   const [state, dispatch] = useContext(AppContext);
 
   const logoutHandler = () => {
-    window.liff.logout().then(() => {
-      window.location.reload();
-    });
+    window.liff.logout();
+    window.location.reload();
   };
 
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -16,7 +15,7 @@ const Navbar = () => {
     <div className='navbar-container'>
       <h3>Foody Ways</h3>
       <div className='action'>
-        <div className='btn' onClick={logoutHandler}>
+        <div className='btn btn-danger' onClick={logoutHandler}>
           Logout
         </div>
         <div className='btn' onClick={() => dispatch({ type: 'CART_OPEN' })}>
